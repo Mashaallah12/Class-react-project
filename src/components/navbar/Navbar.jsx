@@ -5,7 +5,7 @@ import { Link, NavLink } from 'react-router-dom'
 const Navbar = () => {
     return (
         <nav id={styles.navbar}>
-            <figure>logo</figure>
+            <figure><i class="ri-menu-line"></i></figure>
 
             <ul>
                 <li>
