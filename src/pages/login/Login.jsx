@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from "./login.module.css"
-
+import axios from 'axios';
 import { useState } from 'react';
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -11,10 +11,21 @@ function handleChange(e) {
    let {name, value} = e.target;
    setFormData({...formData, [name]: value} )
 }
+
+async function getformData() {
+  let {data} = await axios.get("http://localhost:6060/users");
+  console.log(data);
+}
+
+useEffect(()=>{
+  getformData();
+}, [])
+
+
 function formSubmit(e) {
     e.preventDefault();
     console.log(formData)
-   
+    setFormData({email:"", password:""})
   
 }
 

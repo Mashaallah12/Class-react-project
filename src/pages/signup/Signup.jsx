@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
+import axios from 'axios';
 const Signup = () => {
   const [formData, setFormData] = useState({
-    userName:"",
+    userName: "",
     email: "",
     password: ""
   })
@@ -10,10 +11,22 @@ const Signup = () => {
     let { name, value } = e.target;
     setFormData({ ...formData, [name]: value })
   }
-  function formSubmit(e) {
+   async function formSubmit (e) {
     e.preventDefault();
     console.log(formData)
-
+    setFormData({ userName: "",email: "",password: "" })//for empty the input field
+    try {
+      let resp = await axios.post("http://localhost:6060/users", formData)
+      console.log(resp);
+      console.log("data sent successfully");
+      
+      
+    } catch (error) {
+      console.log(error);
+      console.log("erro while sending data");
+      
+      
+    }
 
   }
   return (
