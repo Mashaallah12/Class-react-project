@@ -14,7 +14,7 @@ const Signup = () => {
    async function formSubmit (e) {
     e.preventDefault();
     console.log(formData)
-    setFormData({ userName: "",email: "",password: "" })//for empty the input field
+    setFormData({ userName: "",email: "",password: "" })//for empty the input field 
     try {
       let resp = await axios.post("http://localhost:6060/users", formData)
       console.log(resp);
